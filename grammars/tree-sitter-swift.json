@@ -1,7 +1,7 @@
 {
   "name": "Swift",
   "scopeName": "source.swift",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "parser": "tree-sitter-swift",
   "injectionRegex": "^(swift)$",
   "fileTypes": ["swift"],
