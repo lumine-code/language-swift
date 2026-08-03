@@ -1,0 +1,23 @@
+{
+  "name": "Swift",
+  "scopeName": "source.swift",
+  "type": "modern-tree-sitter",
+  "parser": "tree-sitter-swift",
+  "injectionRegex": "^(swift)$",
+  "fileTypes": ["swift"],
+  "comments": {
+    "start": "/ "
+  },
+  "treeSitter": {
+    // Pin a tag or a full SHA, never a branch. Verify the ref is on the main
+    // line before trusting it — `gh api repos/OWNER/REPO/compare/<ref>...HEAD`
+    // reporting `diverged` or a nonzero `behind` means it is not.
+    "parserSource": "github:alex-pinkus/tree-sitter-swift#0.7.3",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.11",
+    "grammar": "tree-sitter-swift/tree-sitter-swift.wasm",
+    "highlightsQuery": "tree-sitter-swift/highlights.scm",
+    "localsQuery": "tree-sitter-swift/locals.scm",
+    "foldsQuery": "tree-sitter-swift/folds.scm",
+    "tagsQuery": "tree-sitter-swift/tags.scm"
+  }
+}
