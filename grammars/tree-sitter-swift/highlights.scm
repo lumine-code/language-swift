@@ -239,22 +239,16 @@
 (raw_str_end_part) @string.quoted.double.swift
 
 (line_string_literal
-  [
-    "\\("
-    ")"
-  ] @punctuation.special)
+  "\\(" @punctuation.section.embedded.begin.swift
+  ")" @punctuation.section.embedded.end.swift)
 
 (multi_line_string_literal
-  [
-    "\\("
-    ")"
-  ] @punctuation.special)
+  "\\(" @punctuation.section.embedded.begin.swift
+  ")" @punctuation.section.embedded.end.swift)
 
 (raw_str_interpolation
-  [
-    (raw_str_interpolation_start)
-    ")"
-  ] @punctuation.special)
+  (raw_str_interpolation_start) @punctuation.section.embedded.begin.swift
+  ")" @punctuation.section.embedded.end.swift)
 
 [
   "\""
@@ -326,7 +320,5 @@
 ] @keyword.operator.swift
 
 (type_arguments
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
+  "<" @punctuation.definition.type-arguments.begin.bracket.angle.swift
+  ">" @punctuation.definition.type-arguments.end.bracket.angle.swift)
