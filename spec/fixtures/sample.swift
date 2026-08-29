@@ -14,5 +14,10 @@ func greet(name: String) {
 }
 // <- punctuation.definition.block.end.bracket.curly
 
+class Greeter {
+    var message = "hi"
+//      ^ variable.other.member
+}
+
 // a comment
 // <- comment

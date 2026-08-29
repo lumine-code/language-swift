@@ -15,4 +15,13 @@ describe("Swift Tree-sitter grammar", () => {
   it("tokenizes the fixture", async () => {
     await runGrammarTests(path.join(__dirname, "fixtures", "sample.swift"), /\/\//);
   });
+
+  it("does not fold runs of import declarations", async () => {
+    const editor = await lumine.workspace.open("imports.swift");
+    editor.setText("import Foundation\nimport Dispatch\n");
+    editor.setGrammar(lumine.grammars.grammarForScopeName("source.swift"));
+    await editor.getBuffer().languageMode.ready;
+
+    expect(editor.getBuffer().languageMode.getFoldableRanges()).toEqual([]);
+  });
 });

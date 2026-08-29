@@ -102,10 +102,10 @@
 
 (shebang_line) @keyword.control.directive.swift
 
-(class_body
-  (property_declaration
-    (pattern
-      (simple_identifier) @variable.other.member.swift)))
+((simple_identifier) @variable.other.member.swift
+  (#is? test.typeAt "parent pattern")
+  (#is? test.typeAt "parent.parent property_declaration")
+  (#is? test.typeAt "parent.parent.parent class_body"))
 
 (protocol_property_declaration
   (pattern

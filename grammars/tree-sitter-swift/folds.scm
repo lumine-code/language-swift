@@ -30,6 +30,4 @@
   (willset_didset_block)
   (willset_clause)
   (didset_clause)
-
-  (import_declaration)+
 ] @fold
