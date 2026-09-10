@@ -213,16 +213,18 @@
 (statement_label) @entity.name.label.swift
 
 ; Comments
-[
-  (comment)
-  (multiline_comment)
-] @comment.line.swift @_IGNORE_.spell
+((comment) @comment.line.swift @_IGNORE_.spell
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
+
+(multiline_comment) @comment.line.swift @_IGNORE_.spell
 
 ((comment) @comment.block.documentation.swift
-  (#match? @comment.block.documentation.swift "^///[^/]"))
+  (#match? @comment.block.documentation.swift "^///[^/]")
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((comment) @comment.block.documentation.swift
-  (#match? @comment.block.documentation.swift "^///$"))
+  (#match? @comment.block.documentation.swift "^///$")
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((multiline_comment) @comment.block.documentation.swift
   (#match? @comment.block.documentation.swift "^/[*][*][^*].*[*]/$"))
@@ -238,13 +240,13 @@
 
 (raw_str_end_part) @string.quoted.double.swift
 
-(line_string_literal
-  "\\(" @punctuation.section.embedded.begin.swift
-  ")" @punctuation.section.embedded.end.swift)
+("\\(" @punctuation.section.embedded.begin.swift
+  (#is? test.childOfType "line_string_literal multi_line_string_literal")
+  (#is? test.typeAt "nextSibling interpolated_expression )"))
 
-(multi_line_string_literal
-  "\\(" @punctuation.section.embedded.begin.swift
-  ")" @punctuation.section.embedded.end.swift)
+(")" @punctuation.section.embedded.end.swift
+  (#is? test.childOfType "line_string_literal multi_line_string_literal")
+  (#is? test.typeAt "previousSibling interpolated_expression"))
 
 (raw_str_interpolation
   (raw_str_interpolation_start) @punctuation.section.embedded.begin.swift
@@ -319,6 +321,9 @@
   (bang)
 ] @keyword.operator.swift
 
-(type_arguments
-  "<" @punctuation.definition.type-arguments.begin.bracket.angle.swift
-  ">" @punctuation.definition.type-arguments.end.bracket.angle.swift)
+("<" @punctuation.definition.type-arguments.begin.bracket.angle.swift
+  (#is? test.childOfType type_arguments)
+  (#is? test.first true))
+(">" @punctuation.definition.type-arguments.end.bracket.angle.swift
+  (#is? test.childOfType type_arguments)
+  (#is? test.last true))
