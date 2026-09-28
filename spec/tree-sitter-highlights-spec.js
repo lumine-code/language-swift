@@ -20,12 +20,12 @@ describe("Swift Tree-sitter highlights", () => {
     await editor.getBuffer().languageMode.atTransactionEnd();
   }
 
-  function rawCaptures(startRow, endRow) {
-    const layer = editor.getBuffer().languageMode.rootLanguageLayer;
-    return layer.queries.highlightsQuery.captures(layer.tree.rootNode, {
+  async function rawCaptures(startRow, endRow) {
+    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", {
       startPosition: new Point(startRow, 0),
       endPosition: new Point(endRow, 0),
     });
+    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
   }
 
   function scopesAt(row, text, occurrence = 0) {
@@ -60,7 +60,7 @@ let multiline = """
       expect(scopesAt(2, ")", occurrence)).toContain("punctuation.section.embedded.end.swift");
     }
 
-    const delimiters = rawCaptures(0, 4).filter((capture) =>
+    const delimiters = (await rawCaptures(0, 4)).filter((capture) =>
       capture.name.startsWith("punctuation.section.embedded."),
     );
     expect(delimiters.map((capture) => capture.name)).toEqual([
@@ -83,7 +83,7 @@ let multiline = """
     lines.push(">");
     await setUp(lines.join("\r\n"));
 
-    const captures = rawCaptures(3000, 3006);
+    const captures = await rawCaptures(3000, 3006);
     expect(captures.length).toBeLessThanOrEqual(16);
     expect(
       captures.every(
@@ -103,7 +103,7 @@ let multiline = """
     lines.push('"""');
     await setUp(lines.join("\r\n"));
 
-    const captures = rawCaptures(3000, 3006);
+    const captures = await rawCaptures(3000, 3006);
     expect(captures.length).toBeLessThanOrEqual(64);
     const delimiters = captures.filter((capture) =>
       capture.name.startsWith("punctuation.section.embedded."),
