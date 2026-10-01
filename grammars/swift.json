@@ -25,6 +25,7 @@
     "highlightsQuery": "swift-highlights.scm",
     "localsQuery": "swift-locals.scm",
     "foldsQuery": "swift-folds.scm",
-    "tagsQuery": "swift-tags.scm"
+    "tagsQuery": "swift-tags.scm",
+    "injectionsQuery": "swift-injections.scm"
   }
 }
