@@ -1,0 +1,28 @@
+{
+  "source.swift": {
+    "text": "func top() {}\nclass Widget { var count: Int = 0\nfunc greet() -> Int { func local() {}\nreturn 1 } }",
+    "symbols": [
+      {
+        "name": "top",
+        "tag": "function"
+      },
+      {
+        "name": "Widget",
+        "tag": "class"
+      },
+      {
+        "name": "count",
+        "tag": "property"
+      },
+      {
+        "name": "greet",
+        "tag": "method"
+      },
+      {
+        "name": "local",
+        "tag": "function"
+      }
+    ],
+    "only": true
+  }
+}

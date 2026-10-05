@@ -1,51 +1,14 @@
-(class_declaration
-  name: (type_identifier) @name) @definition.class
+(class_declaration name: (type_identifier) @name) @definition.class
+(protocol_declaration name: (type_identifier) @name) @definition.interface
 
-(protocol_declaration
-  name: (type_identifier) @name) @definition.interface
+; Member ranges belong to their declaration, never to the enclosing class.
+(class_body (function_declaration name: (simple_identifier) @name) @definition.method)
+(protocol_body (protocol_function_declaration name: (simple_identifier) @name) @definition.method)
+(subscript_declaration "subscript" @name) @definition.method
+(init_declaration "init" @name) @definition.constructor
+(deinit_declaration "deinit" @name) @definition.method
+(property_declaration (pattern (simple_identifier) @name)) @definition.property
 
-(class_declaration
-    (class_body
-        [
-            (function_declaration
-                name: (simple_identifier) @name
-            )
-            (subscript_declaration
-                (parameter (simple_identifier) @name)
-            )
-            (init_declaration "init" @name)
-            (deinit_declaration "deinit" @name)
-        ]
-    )
-) @definition.method
-
-(protocol_declaration
-    (protocol_body
-        [
-            (protocol_function_declaration
-                name: (simple_identifier) @name
-            )
-            (subscript_declaration
-                (parameter (simple_identifier) @name)
-            )
-            (init_declaration "init" @name)
-        ]
-    )
-) @definition.method
-
-(class_declaration
-    (class_body
-        [
-            (property_declaration
-                (pattern (simple_identifier) @name)
-            )
-        ]
-    )
-) @definition.property
-
-(property_declaration
-    (pattern (simple_identifier) @name)
-) @definition.property
-
-(function_declaration
-    name: (simple_identifier) @name) @definition.function
+; Free and local functions do not duplicate member declarations.
+(source_file (function_declaration name: (simple_identifier) @name) @definition.function)
+(statements (function_declaration name: (simple_identifier) @name) @definition.function)
