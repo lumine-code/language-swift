@@ -88,6 +88,10 @@
   (as_operator)
 ] @keyword.control.swift
 
+(unsafe_expression "unsafe" @keyword.control.swift)
+
+["sending" "isolated" "borrowing" "consuming"] @storage.modifier.swift
+
 [
   "enum"
   "struct"
@@ -273,7 +277,7 @@
 
 (boolean_literal) @constant.language.boolean.swift
 
-"nil" @constant.language.swift
+(nil_literal) @constant.language.swift
 
 (wildcard_pattern) @constant.character.escape.swift
 

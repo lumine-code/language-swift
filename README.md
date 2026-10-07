@@ -4,7 +4,7 @@ Swift language support.
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars, built from [tree-sitter-swift](https://github.com/alex-pinkus/tree-sitter-swift).
+- **Grammars**: provides Tree-sitter grammars, built from the maintained [tree-sitter-swift fork](https://github.com/lumine-code/tree-sitter-swift).
 - **Syntax highlighting**: full tree-sitter grammar coverage for Swift files.
 - **Folding**: folds blocks from the parse tree rather than by indentation.
 
