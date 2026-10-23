@@ -27,4 +27,15 @@ describe("Swift 6 concurrency and strict memory safety syntax", () => {
     expect(root.hasError).toBe(false);
     expect(root.descendantsOfType("regex_literal").length).toBe(1);
   });
+
+  for (const statement of ["@MainActor func task() {}\n  weak var item: Object?", "open()"]) {
+    it(`accepts later switch-case statements starting with ${statement.split(" ")[0]}`, async () => {
+      editor.setText(`switch value {\ncase 0:\n  run()\n  ${statement}\ndefault: break\n}\n`);
+      await editor.languageMode.ready;
+      expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
+      editor.getBuffer().append("let after = 1\n");
+      await editor.languageMode.atTransactionEnd();
+      expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
+    });
+  }
 });
