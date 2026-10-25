@@ -220,14 +220,14 @@
 ((comment) @comment.line.swift @_IGNORE_.spell
   (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
-(multiline_comment) @comment.line.swift @_IGNORE_.spell
+(multiline_comment) @comment.block.swift @_IGNORE_.spell
 
-((comment) @comment.block.documentation.swift
-  (#match? @comment.block.documentation.swift "^///[^/]")
+((comment) @comment.line.documentation.swift
+  (#match? @comment.line.documentation.swift "^///[^/]")
   (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
-((comment) @comment.block.documentation.swift
-  (#match? @comment.block.documentation.swift "^///$")
+((comment) @comment.line.documentation.swift
+  (#match? @comment.line.documentation.swift "^///$")
   (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((multiline_comment) @comment.block.documentation.swift
