@@ -5,7 +5,7 @@
   "parser": "tree-sitter-swift",
   "injectionNames": ["swift"],
   "fileTypes": ["swift", "swiftinterface"],
-  "firstLineRegex": "^#![ \\t]*(?:/[^\\r\\n \\t]*/(?:swift)|/[^\\r\\n \\t]*/env[ \\t]+(?:-S[ \\t]+)?(?:swift))(?=[ \\t\\r\\n]|$)",
+  "firstLineRegex": "^#![ \\t]*(?:/[^\\x0d\\x0a \\t]*/(?:swift(?:\\.exe)?)|/[^\\x0d\\x0a \\t]*/env(?:\\.exe)?[ \\t]+(?:-S[ \\t]+)?(?:swift(?:\\.exe)?))(?=[ \\t\\x0d\\x0a]|$)",
   "comments": {
     "start": "// "
   },

@@ -64,9 +64,17 @@ describe("swift editing settings", () => {
       "#!/usr/bin/env swift",
       "#!/usr/bin/env -S swift -O",
       "#!/usr/bin/swift\r\nprint(1)",
+      "#!/opt/swift/usr/bin/swift.exe",
+      "#!/usr/bin/env swift.exe",
+      "#!/usr/bin/env.exe -S swift.exe -O",
     ])
       expect(lumine.grammars.selectGrammar("script", text).scopeName).toBe("source.swift");
-    for (const text of ["#!/usr/bin/env swiftc", "#!/usr/bin/python -c swift"])
+    for (const text of [
+      "#!/usr/bin/env swiftc",
+      "#!/usr/bin/swift.exe-wrapper",
+      "#!/usr/bin/env.exe -S python -c swift.exe",
+      "#!/usr/bin/python -c swift",
+    ])
       expect(lumine.grammars.selectGrammar("script", text).scopeName).not.toBe("source.swift");
   });
 });
