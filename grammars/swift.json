@@ -4,7 +4,8 @@
   "type": "tree-sitter",
   "parser": "tree-sitter-swift",
   "injectionNames": ["swift"],
-  "fileTypes": ["swift"],
+  "fileTypes": ["swift", "swiftinterface"],
+  "firstLineRegex": "^#![ \\t]*(?:/[^\\r\\n \\t]*/(?:swift)|/[^\\r\\n \\t]*/env[ \\t]+(?:-S[ \\t]+)?(?:swift))(?=[ \\t\\r\\n]|$)",
   "comments": {
     "start": "// "
   },
