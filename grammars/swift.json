@@ -23,6 +23,7 @@
     "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "swift.wasm",
     "highlightsQuery": "swift-highlights.scm",
+    "indentsQuery": "swift-indents.scm",
     "localsQuery": "swift-locals.scm",
     "foldsQuery": "swift-folds.scm",
     "tagsQuery": "swift-tags.scm",
