@@ -3,6 +3,9 @@ Source: https://github.com/lumine-code/tree-sitter-swift
 Commit: cc05eda6e0971997677e6907dfc04f9b5d44e026
 Ref: cc05eda6e0971997677e6907dfc04f9b5d44e026
 
+Parser source: github:lumine-code/tree-sitter-swift#cc05eda6e0971997677e6907dfc04f9b5d44e026
+Resolved commit: cc05eda6e0971997677e6907dfc04f9b5d44e026
+
 Original file: LICENSE
 
 MIT License
