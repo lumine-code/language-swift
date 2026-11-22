@@ -20,6 +20,7 @@
     "indentsQuery": "swift-indents.scm",
     "localsQuery": "swift-locals.scm",
     "foldsQuery": "swift-folds.scm",
+    "tagsQuerySupportsLocalPath": true,
     "tagsQuery": "swift-tags.scm",
     "injectionsQuery": "swift-injections.scm"
   }
